@@ -14,7 +14,8 @@ import {
   FaExclamationCircle,
   FaLinkedin,
   FaGithub,
-  FaTwitter
+  FaTwitter,
+  FaWhatsapp
 } from "react-icons/fa";
 import "./Contact.css";
 
@@ -51,7 +52,6 @@ const Contact = () => {
         setStatus({ loading: false, success: "🎉 Thank you! Your message has been sent successfully.", error: null });
         setFormData({ name: "", email: "", subject: "", message: "" });
         
-        // Auto-hide success message after 5 seconds
         setTimeout(() => {
           setStatus({ loading: false, success: null, error: null });
         }, 5000);
@@ -65,13 +65,14 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: <FaLinkedin />, name: "LinkedIn", url: "https://linkedin.com/in/kavindubogahawatte-7b3810320", color: "#0077B5" },
-    { icon: <FaGithub />, name: "GitHub", url: "https://github.com/kavizzz03", color: "#333" }
-   
+    { icon: <FaGithub />, name: "GitHub", url: "https://github.com/kavizzz03", color: "#333" },
+    { icon: <FaWhatsapp />, name: "WhatsApp", url: "https://wa.me/94740890730", color: "#25D366" }
   ];
 
   const contactInfo = [
     { icon: <FaEnvelope />, label: "Email", value: "kavindumalshan2003@gmail.com", link: "mailto:kavindumalshan2003@gmail.com" },
     { icon: <FaPhone />, label: "Phone", value: "+94 74 089 0730", link: "tel:+94740890730" },
+    { icon: <FaWhatsapp />, label: "WhatsApp", value: "+94 74 089 0730", link: "https://wa.me/94740890730" },
     { icon: <FaMapMarkerAlt />, label: "Location", value: "Colombo, Sri Lanka", link: null },
     { icon: <FaClock />, label: "Response Time", value: "Within 24 hours", link: null }
   ];
@@ -81,22 +82,22 @@ const Contact = () => {
       {/* Animated Background Elements */}
       <div className="contact-background">
         <div className="floating-shapes">
-          {[...Array(6)].map((_, i) => (
+          {[...Array(4)].map((_, i) => (
             <motion.div
               key={i}
               className="floating-shape"
               style={{ 
                 '--i': i,
-                '--size': `${20 + i * 5}px`,
+                '--size': `${15 + i * 4}px`,
                 '--color': `rgba(99, 102, 241, ${0.1 + i * 0.05})`
               }}
               animate={{
-                y: [0, -30, 0],
-                x: [0, Math.random() * 20 - 10, 0],
+                y: [0, -20, 0],
+                x: [0, Math.random() * 15 - 7.5, 0],
                 rotate: [0, 180, 360]
               }}
               transition={{
-                duration: 8 + i * 2,
+                duration: 6 + i * 2,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -109,15 +110,15 @@ const Contact = () => {
         {/* Header Section */}
         <motion.div
           className="contact-header"
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
           <motion.h2 
             className="contact-title"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             Let's Start a <span className="gradient-text">Conversation</span>
           </motion.h2>
@@ -125,50 +126,49 @@ const Contact = () => {
             className="contact-subtitle"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
-            <br />
-            <motion.span 
-              className="response-time"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              ⚡ Typically respond within <strong>24 hours</strong>
-            </motion.span>
           </motion.p>
+          <motion.div 
+            className="response-time"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            ⚡ Typically respond within <strong>24 hours</strong>
+          </motion.div>
         </motion.div>
 
         <div className="contact-content">
           {/* Contact Form */}
           <motion.div
             className="form-container"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <motion.form 
               className="contact-form"
               onSubmit={handleSubmit}
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
             >
               <div className="form-header">
                 <motion.h3 
                   className="form-title"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
                 >
-                  Send Me a Message
+                  Send Message
                 </motion.h3>
                 <motion.div 
                   className="form-icon"
                   initial={{ rotate: -180, scale: 0 }}
                   animate={{ rotate: 0, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.8, type: "spring" }}
+                  transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
                 >
                   <FaPaperPlane />
                 </motion.div>
@@ -177,9 +177,9 @@ const Contact = () => {
               <div className="form-grid">
                 <motion.div
                   className={`form-group ${focusedField === 'name' ? 'focused' : ''}`}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
                 >
                   <div className="input-container">
                     <FaUser className="input-icon" />
@@ -198,9 +198,9 @@ const Contact = () => {
 
                 <motion.div
                   className={`form-group ${focusedField === 'email' ? 'focused' : ''}`}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
+                  transition={{ duration: 0.4, delay: 0.55 }}
                 >
                   <div className="input-container">
                     <FaEnvelope className="input-icon" />
@@ -219,16 +219,16 @@ const Contact = () => {
 
                 <motion.div
                   className={`form-group ${focusedField === 'subject' ? 'focused' : ''}`}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.1 }}
+                  transition={{ duration: 0.4, delay: 0.6 }}
                 >
                   <div className="input-container">
                     <FaTag className="input-icon" />
                     <input
                       type="text"
                       name="subject"
-                      placeholder="Project Discussion / Collaboration"
+                      placeholder="Project Discussion"
                       value={formData.subject}
                       onChange={handleChange}
                       onFocus={() => handleFocus('subject')}
@@ -240,15 +240,15 @@ const Contact = () => {
 
                 <motion.div
                   className={`form-group textarea-group ${focusedField === 'message' ? 'focused' : ''}`}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
+                  transition={{ duration: 0.4, delay: 0.65 }}
                 >
                   <div className="input-container">
                     <FaComment className="input-icon" />
                     <textarea
                       name="message"
-                      rows="6"
+                      rows="5"
                       placeholder="Tell me about your project, ideas, or anything you'd like to discuss..."
                       value={formData.message}
                       onChange={handleChange}
@@ -264,14 +264,14 @@ const Contact = () => {
                 type="submit"
                 className={`send-btn ${status.loading ? 'loading' : ''}`}
                 whileHover={{ 
-                  scale: status.loading ? 1 : 1.05,
-                  y: status.loading ? 0 : -2
+                  scale: status.loading ? 1 : 1.02,
+                  y: status.loading ? 0 : -1
                 }}
-                whileTap={{ scale: status.loading ? 1 : 0.95 }}
+                whileTap={{ scale: status.loading ? 1 : 0.98 }}
                 disabled={status.loading}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.3 }}
+                transition={{ duration: 0.4, delay: 0.7 }}
               >
                 <span className="btn-content">
                   {status.loading ? (
@@ -281,7 +281,7 @@ const Contact = () => {
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                       />
-                      Sending Your Message...
+                      Sending...
                     </>
                   ) : (
                     <>
@@ -296,10 +296,10 @@ const Contact = () => {
                 {status.success && (
                   <motion.div
                     className="status-message success"
-                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                    transition={{ duration: 0.4 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <FaCheckCircle className="status-icon" />
                     {status.success}
@@ -309,10 +309,10 @@ const Contact = () => {
                 {status.error && (
                   <motion.div
                     className="status-message error"
-                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                    transition={{ duration: 0.4 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <FaExclamationCircle className="status-icon" />
                     {status.error}
@@ -325,16 +325,16 @@ const Contact = () => {
           {/* Contact Information */}
           <motion.div
             className="info-container"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="info-card">
               <motion.h3 
                 className="info-title"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
               >
                 Let's Connect
               </motion.h3>
@@ -344,10 +344,11 @@ const Contact = () => {
                   <motion.div
                     key={item.label}
                     className="contact-info-item"
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 15 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.4, delay: 0.5 + index * 0.08 }}
+                    whileHover={{ x: 3 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <div className="contact-icon-wrapper">
                       {item.icon}
@@ -355,7 +356,12 @@ const Contact = () => {
                     <div className="contact-details">
                       <span className="contact-label">{item.label}</span>
                       {item.link ? (
-                        <a href={item.link} className="contact-value">
+                        <a 
+                          href={item.link} 
+                          className="contact-value"
+                          target={item.link.startsWith('http') ? "_blank" : "_self"}
+                          rel={item.link.startsWith('http') ? "noopener noreferrer" : ""}
+                        >
                           {item.value}
                         </a>
                       ) : (
@@ -369,9 +375,9 @@ const Contact = () => {
               {/* Social Links */}
               <motion.div 
                 className="social-section"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
+                transition={{ duration: 0.4, delay: 0.8 }}
               >
                 <p className="social-title">Follow me on</p>
                 <div className="social-links">
@@ -382,15 +388,17 @@ const Contact = () => {
                       className="social-link"
                       style={{ background: social.color }}
                       whileHover={{ 
-                        scale: 1.1, 
-                        y: -3,
+                        scale: 1.05, 
+                        y: -2,
                         transition: { type: "spring", stiffness: 400 }
                       }}
-                      whileTap={{ scale: 0.9 }}
-                      initial={{ opacity: 0, scale: 0 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 1.3 + index * 0.1 }}
+                      transition={{ delay: 0.9 + index * 0.1 }}
                       aria-label={social.name}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {social.icon}
                     </motion.a>
@@ -403,7 +411,7 @@ const Contact = () => {
                 className="additional-info"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.5 }}
+                transition={{ duration: 0.4, delay: 1.1 }}
               >
                 <p className="availability">
                   <span className="status-dot"></span>

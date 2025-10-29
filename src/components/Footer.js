@@ -68,19 +68,19 @@ const Footer = () => {
     <footer className="footer" role="contentinfo">
       <div className="footer-background" aria-hidden="true">
         <div className="floating-particles">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
               className="particle"
               animate={{ 
-                y: [0, -80, 0], 
-                opacity: [0, 0.4, 0], 
+                y: [0, -60, 0], 
+                opacity: [0, 0.3, 0], 
                 scale: [0, 1, 0],
               }}
               transition={{ 
-                duration: 4 + (i % 2), 
+                duration: 3 + (i % 2), 
                 repeat: Infinity, 
-                delay: i * 0.3,
+                delay: i * 0.4,
               }}
             />
           ))}
@@ -90,10 +90,10 @@ const Footer = () => {
       <div className="footer-container">
         <motion.div
           className="footer-content"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {/* Main Grid - Stack on Mobile */}
           <div className="footer-grid">
@@ -103,18 +103,39 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
+              viewport={{ once: true }}
             >
-              <h2 className="brand-name">
-                Kavindu<span className="brand-accent">Bogahawatte</span>
-              </h2>
-              <p className="brand-tagline">
+              <motion.h2 
+                className="brand-name"
+                whileInView={{ scale: 1 }}
+                initial={{ scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+              >
+                Kavindu<span className="brand-accent">B</span>
+              </motion.h2>
+              <motion.p 
+                className="brand-tagline"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
                 Full Stack Developer & <span className="highlight">UI/UX Enthusiast</span>
-              </p>
-              <p className="brand-description">
+              </motion.p>
+              <motion.p 
+                className="brand-description"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
                 Crafting digital experiences that blend beautiful design with cutting-edge functionality.
-              </p>
+              </motion.p>
 
-              <div className="tech-stack-mobile">
+              <motion.div 
+                className="tech-stack-mobile"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
                 <span className="tech-label">Tech Stack</span>
                 <div className="tech-icons-mobile">
                   {techStack.map((tech, index) => (
@@ -123,15 +144,24 @@ const Footer = () => {
                       className="tech-icon-mobile"
                       title={tech.name}
                       style={{ color: tech.color }}
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: index * 0.1 }}
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      transition={{ 
+                        delay: 0.5 + index * 0.1,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      whileHover={{ 
+                        scale: 1.2, 
+                        y: -3,
+                        transition: { type: "spring", stiffness: 400 }
+                      }}
                     >
                       {tech.icon}
                     </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Contact Section */}
@@ -140,35 +170,66 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
             >
-              <h3 className="contact-title">Get In Touch</h3>
+              <motion.h3 
+                className="contact-title"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                Get In Touch
+              </motion.h3>
               <div className="contact-info-mobile">
-                <div className="contact-item-mobile">
+                <motion.div 
+                  className="contact-item-mobile"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 }}
+                  whileHover={{ x: 5 }}
+                >
                   <div className="contact-icon-mobile">
                     <FaEnvelope />
                   </div>
                   <a href="mailto:kavindumalshan2003@gmail.com">
                     kavindumalshan2003@gmail.com
                   </a>
-                </div>
-                <div className="contact-item-mobile">
+                </motion.div>
+                <motion.div 
+                  className="contact-item-mobile"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.45 }}
+                  whileHover={{ x: 5 }}
+                >
                   <div className="contact-icon-mobile">
                     <FaPhone />
                   </div>
                   <a href="tel:+94740890730">
                     +94 74 089 0730
                   </a>
-                </div>
-                <div className="contact-item-mobile">
+                </motion.div>
+                <motion.div 
+                  className="contact-item-mobile"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                  whileHover={{ x: 5 }}
+                >
                   <div className="contact-icon-mobile">
                     <FaMapMarkerAlt />
                   </div>
                   <span>Colombo, Sri Lanka</span>
-                </div>
+                </motion.div>
               </div>
 
               {/* Quick Social Links */}
-              <div className="quick-social-mobile">
+              <motion.div 
+                className="quick-social-mobile"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
                 <span>Follow me:</span>
                 <div className="quick-social-icons">
                   {socialLinks.slice(0, 4).map((social, index) => (
@@ -181,14 +242,20 @@ const Footer = () => {
                       style={{ background: social.gradient }}
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
-                      transition={{ delay: 0.3 + index * 0.1 }}
+                      whileHover={{ 
+                        scale: 1.1, 
+                        y: -2,
+                        transition: { type: "spring", stiffness: 400 }
+                      }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ delay: 0.7 + index * 0.1 }}
                       aria-label={social.label}
                     >
                       {social.icon}
                     </motion.a>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -198,10 +265,16 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
           >
-            <p className="social-invite">
+            <motion.p 
+              className="social-invite"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
               Ready to bring your ideas to life? Let's connect! <FaRegSmileWink />
-            </p>
+            </motion.p>
             <div className="main-social-links">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -213,8 +286,13 @@ const Footer = () => {
                   style={{ background: social.gradient }}
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
+                  whileHover={{ 
+                    scale: 1.15, 
+                    y: -3,
+                    transition: { type: "spring", stiffness: 400 }
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ delay: 0.6 + index * 0.1 }}
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -228,21 +306,44 @@ const Footer = () => {
             className="footer-bottom-mobile"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.7 }}
+            viewport={{ once: true }}
           >
-            <div className="copyright-mobile">
+            <motion.div 
+              className="copyright-mobile"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+            >
               <p>
                 © {new Date().getFullYear()} Kavindu Bogahawatte. 
-                Made with <FaHeart className="heart-icon" /> and 
-                <FaCoffee className="coffee-icon" />
+                Made with <motion.span 
+                  className="heart-icon"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
+                ><FaHeart /></motion.span> and
+                <motion.span 
+                  className="coffee-icon"
+                  animate={{ rotate: [0, 15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                ><FaCoffee /></motion.span>
               </p>
-            </div>
+            </motion.div>
             
-            <div className="footer-actions-mobile">
+            <motion.div 
+              className="footer-actions-mobile"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+            >
               <motion.a
                 href="#contact"
                 className="cta-button-mobile"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400 }
+                }}
                 whileTap={{ scale: 0.95 }}
               >
                 <FaRocket />
@@ -252,13 +353,17 @@ const Footer = () => {
               <motion.button
                 className="back-to-top-mobile"
                 onClick={scrollToTop}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ 
+                  scale: 1.1,
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400 }
+                }}
                 whileTap={{ scale: 0.9 }}
                 aria-label="Back to top"
               >
                 <FaArrowUp />
               </motion.button>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
