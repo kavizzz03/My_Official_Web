@@ -1,41 +1,44 @@
-/* Contact.css - Fully Mobile Responsive */
-
+/* Contact.css - Cyberpunk Theme */
 :root {
-  --primary-bg: #0f172a;
-  --secondary-bg: #1e293b;
-  --accent-color: #6366f1;
-  --accent-secondary: #8b5cf6;
-  --text-primary: #f1f5f9;
+  --primary-bg: #0a0a1f;
+  --secondary-bg: #1a1a2e;
+  --accent-color: #00f3ff;
+  --accent-secondary: #ff00ff;
+  --matrix-green: #00ff41;
+  --electric-purple: #9d00ff;
+  --text-primary: #ffffff;
   --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
-  --glass-bg: rgba(30, 41, 59, 0.6);
-  --glass-border: rgba(100, 116, 139, 0.3);
-  --success-color: #10b981;
-  --error-color: #ef4444;
+  --glass-bg: rgba(26, 26, 46, 0.6);
+  --glass-border: rgba(0, 243, 255, 0.3);
+  --success-color: #00ff41;
+  --error-color: #ff0066;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 12px;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 243, 255, 0.2);
+  --shadow-md: 0 8px 25px rgba(0, 243, 255, 0.3);
+  --shadow-lg: 0 20px 40px rgba(0, 243, 255, 0.4);
 }
 
-/* Contact Section Base */
+/* Contact Section Base - Cyberpunk */
 .contact-section {
   position: relative;
   min-height: 100vh;
-  background: var(--primary-bg);
+  background: 
+    linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
   padding: 2rem 1rem;
   overflow: hidden;
   display: flex;
   align-items: center;
+  backdrop-filter: blur(20px);
 }
 
 .contact-background {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 0, 255, 0.05) 0%, transparent 50%);
 }
 
 .floating-shapes {
@@ -52,6 +55,29 @@
   top: calc(var(--i) * 15% + 10%);
   left: calc(var(--i) * 12% + 5%);
   filter: blur(1px);
+  animation: floatShape 8s infinite ease-in-out;
+  animation-delay: calc(var(--i) * 1s);
+}
+
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Neural Network Overlay */
+.neural-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  opacity: 0.1;
 }
 
 .contact-container {
@@ -62,33 +88,40 @@
   width: 100%;
 }
 
-/* Header Section - Mobile First */
+/* Header Section - Cyberpunk Mobile First */
 .contact-header {
   text-align: center;
   margin-bottom: 2.5rem;
   padding: 0 0.5rem;
+  position: relative;
 }
 
 .contact-title {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--text-primary);
   margin-bottom: 1rem;
   line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary), var(--matrix-green));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
 }
 
 .contact-subtitle {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: var(--accent-color);
   line-height: 1.5;
   margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+  font-weight: 600;
 }
 
 .response-time {
@@ -96,11 +129,13 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: var(--text-muted);
-  background: rgba(99, 102, 241, 0.1);
+  color: var(--matrix-green);
+  background: rgba(0, 255, 65, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  font-family: 'Courier New', monospace;
 }
 
 /* Content Layout - Mobile First */
@@ -111,19 +146,32 @@
   width: 100%;
 }
 
-/* Form Container */
+/* Form Container - Cyberpunk */
 .form-container {
   width: 100%;
 }
 
 .contact-form {
-  background: var(--glass-bg);
+  background: rgba(0, 243, 255, 0.05);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: var(--shadow-md);
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  opacity: 0.8;
 }
 
 .form-header {
@@ -135,23 +183,46 @@
 
 .form-title {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 800;
   color: var(--text-primary);
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--accent-color), var(--text-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .form-icon {
   width: 44px;
   height: 44px;
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 1.1rem;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.form-icon:hover::before {
+  left: 100%;
 }
 
 /* Form Grid - Single Column on Mobile */
@@ -168,7 +239,7 @@
 }
 
 .form-group.focused {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .input-container {
@@ -188,14 +259,15 @@
 
 .form-group.focused .input-icon {
   color: var(--accent-color);
-  transform: scale(1.05);
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
 }
 
 .input-container input,
 .input-container textarea {
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(10, 10, 31, 0.6);
   border: 2px solid var(--glass-border);
   border-radius: 10px;
   color: var(--text-primary);
@@ -204,20 +276,23 @@
   resize: none;
   min-height: 52px;
   -webkit-appearance: none;
+  font-family: 'Courier New', monospace;
+  backdrop-filter: blur(10px);
 }
 
 .input-container input::placeholder,
 .input-container textarea::placeholder {
   color: var(--text-muted);
   font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
 }
 
 .input-container input:focus,
 .input-container textarea:focus {
   outline: none;
   border-color: var(--accent-color);
-  background: rgba(15, 23, 42, 0.8);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background: rgba(10, 10, 31, 0.8);
+  box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.2), 0 0 20px rgba(0, 243, 255, 0.3);
 }
 
 .input-container textarea {
@@ -227,16 +302,16 @@
   padding-bottom: 1rem;
 }
 
-/* Send Button */
+/* Send Button - Cyberpunk */
 .send-btn {
   width: 100%;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
   border: none;
   border-radius: 10px;
   color: white;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
   position: relative;
@@ -245,6 +320,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
+}
+
+.send-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.send-btn:hover::before {
+  left: 100%;
 }
 
 .send-btn:disabled {
@@ -253,7 +346,8 @@
 }
 
 .send-btn:not(:disabled):hover {
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 6px 25px rgba(0, 243, 255, 0.6);
+  transform: translateY(-2px);
 }
 
 .btn-content {
@@ -261,6 +355,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-icon {
@@ -273,9 +369,15 @@
   border: 2px solid transparent;
   border-top: 2px solid white;
   border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-/* Status Messages */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Status Messages - Cyberpunk */
 .status-message {
   display: flex;
   align-items: center;
@@ -283,21 +385,25 @@
   padding: 0.875rem 1rem;
   border-radius: 10px;
   margin-top: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.9rem;
   line-height: 1.4;
+  backdrop-filter: blur(10px);
+  font-family: 'Courier New', monospace;
 }
 
 .status-message.success {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid rgba(0, 255, 65, 0.3);
   color: var(--success-color);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
 }
 
 .status-message.error {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(255, 0, 102, 0.1);
+  border: 1px solid rgba(255, 0, 102, 0.3);
   color: var(--error-color);
+  text-shadow: 0 0 10px rgba(255, 0, 102, 0.3);
 }
 
 .status-icon {
@@ -305,30 +411,49 @@
   flex-shrink: 0;
 }
 
-/* Info Container */
+/* Info Container - Cyberpunk */
 .info-container {
   width: 100%;
 }
 
 .info-card {
-  background: var(--glass-bg);
+  background: rgba(0, 243, 255, 0.05);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: var(--shadow-md);
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--matrix-green), var(--electric-purple));
+  opacity: 0.8;
 }
 
 .info-title {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--matrix-green), var(--electric-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Contact Info List */
+/* Contact Info List - Cyberpunk */
 .contact-info-list {
   display: flex;
   flex-direction: column;
@@ -341,22 +466,42 @@
   align-items: center;
   gap: 0.875rem;
   padding: 1rem;
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(10, 10, 31, 0.4);
   border-radius: 10px;
   border: 1px solid var(--glass-border);
   transition: var(--transition);
   min-height: 68px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.contact-info-item:hover::before {
+  left: 100%;
 }
 
 .contact-info-item:hover {
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(0, 243, 255, 0.1);
   border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  transform: translateX(5px);
 }
 
 .contact-icon-wrapper {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -364,7 +509,9 @@
   color: white;
   font-size: 1rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 243, 255, 0.4);
+  position: relative;
+  z-index: 2;
 }
 
 .contact-details {
@@ -373,42 +520,49 @@
   gap: 0.25rem;
   flex: 1;
   min-width: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .contact-label {
   font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 600;
+  color: var(--accent-color);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 .contact-value {
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
   font-size: 0.9rem;
   word-break: break-word;
+  font-family: 'Courier New', monospace;
 }
 
 .contact-value:hover {
   color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
-/* Social Section */
+/* Social Section - Cyberpunk */
 .social-section {
   text-align: center;
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .social-title {
-  color: var(--text-muted);
+  color: var(--accent-color);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 .social-links {
@@ -429,20 +583,49 @@
   font-size: 1.2rem;
   text-decoration: none;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 243, 255, 0.3);
   flex-shrink: 0;
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.social-link:hover::before {
+  left: 100%;
 }
 
 .social-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 243, 255, 0.5);
 }
 
-/* Additional Info */
+/* Additional Info - Cyberpunk */
 .additional-info {
   text-align: center;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--glass-border);
+  border-top: 1px solid rgba(0, 243, 255, 0.3);
+  position: relative;
+}
+
+.additional-info::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--matrix-green), transparent);
 }
 
 .availability {
@@ -450,28 +633,34 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  color: var(--text-muted);
+  color: var(--matrix-green);
   font-size: 0.9rem;
   margin: 0;
   flex-wrap: wrap;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  font-weight: 600;
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
-  background: var(--success-color);
+  background: var(--matrix-green);
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  animation: cyberPulse 2s infinite;
+  box-shadow: 0 0 10px var(--matrix-green);
 }
 
-@keyframes pulse {
+@keyframes cyberPulse {
   0%, 100% {
     opacity: 1;
     transform: scale(1);
+    box-shadow: 0 0 10px var(--matrix-green);
   }
   50% {
     opacity: 0.7;
-    transform: scale(1.2);
+    transform: scale(1.3);
+    box-shadow: 0 0 20px var(--matrix-green);
   }
 }
 
@@ -606,9 +795,10 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 a:focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--matrix-green);
   outline-offset: 2px;
   border-radius: 4px;
+  box-shadow: 0 0 15px var(--matrix-green);
 }
 
 /* Touch device improvements */
@@ -636,7 +826,8 @@ a:focus-visible {
   .send-btn,
   .social-link,
   .contact-info-item,
-  .status-dot {
+  .status-dot,
+  .loading-spinner {
     animation: none;
     transition: none;
   }
@@ -653,6 +844,7 @@ a:focus-visible {
     --text-secondary: #333333;
     --accent-color: #0000ff;
     --accent-secondary: #000080;
+    --matrix-green: #008000;
   }
 
   .contact-form,
@@ -661,20 +853,11 @@ a:focus-visible {
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .theme-auto {
-    --primary-bg: #0f172a;
-    --secondary-bg: #1e293b;
-    --text-primary: #f1f5f9;
-    --text-secondary: #e2e8f0;
-  }
-}
-
 /* Print styles */
 @media print {
   .contact-background,
   .floating-shapes,
+  .neural-overlay,
   .social-links,
   .status-dot {
     display: none;
@@ -686,4 +869,37 @@ a:focus-visible {
     border: 1px solid #ccc;
     box-shadow: none;
   }
+}
+
+/* Cyberpunk Data Stream Effect */
+.data-stream-contact {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-color), 
+    var(--accent-secondary), 
+    var(--matrix-green), 
+    transparent
+  );
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+/* Binary Code Animation Overlay */
+.binary-overlay-contact {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.02;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: var(--matrix-green);
+  overflow: hidden;
 }

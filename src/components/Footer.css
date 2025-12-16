@@ -1,38 +1,42 @@
-/* Footer.css - Fully Mobile Responsive */
-
+/* Footer.css - Cyberpunk Theme */
 :root {
-  --primary-bg: #0f172a;
-  --secondary-bg: #1e293b;
-  --accent-color: #6366f1;
-  --accent-secondary: #8b5cf6;
-  --text-primary: #f1f5f9;
+  --primary-bg: #0a0a1f;
+  --secondary-bg: #1a1a2e;
+  --accent-color: #00f3ff;
+  --accent-secondary: #ff00ff;
+  --matrix-green: #00ff41;
+  --electric-purple: #9d00ff;
+  --text-primary: #ffffff;
   --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
-  --glass-bg: rgba(30, 41, 59, 0.6);
-  --glass-border: rgba(100, 116, 139, 0.3);
-  --success-color: #10b981;
-  --error-color: #ef4444;
+  --glass-bg: rgba(26, 26, 46, 0.6);
+  --glass-border: rgba(0, 243, 255, 0.3);
+  --success-color: #00ff41;
+  --error-color: #ff0066;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 12px;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 243, 255, 0.2);
+  --shadow-md: 0 8px 25px rgba(0, 243, 255, 0.3);
+  --shadow-lg: 0 20px 40px rgba(0, 243, 255, 0.4);
 }
 
-/* Footer Base - Mobile First */
+/* Footer Base - Cyberpunk Mobile First */
 .footer {
   position: relative;
-  background: var(--primary-bg);
+  background: 
+    linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
   border-top: 1px solid var(--glass-border);
   overflow: hidden;
   padding: 2rem 0 1rem;
+  backdrop-filter: blur(20px);
 }
 
 .footer-background {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse at top right, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    radial-gradient(ellipse at top right, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
 }
 
 .floating-particles {
@@ -42,13 +46,26 @@
 
 .particle {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   background: var(--accent-color);
   border-radius: 50%;
   bottom: 0;
   left: calc(var(--i, 0) * 16%);
   opacity: 0;
+  animation: particleFloat 6s infinite ease-in-out;
+  animation-delay: calc(var(--i, 0) * 0.5s);
+}
+
+@keyframes particleFloat {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.5);
+    opacity: 0.8;
+  }
 }
 
 .footer-container {
@@ -72,65 +89,75 @@
   gap: 2rem;
 }
 
-/* Brand Section - Mobile Optimized */
+/* Brand Section - Cyberpunk Mobile Optimized */
 .footer-brand {
   text-align: center;
   padding: 0 0.5rem;
+  position: relative;
 }
 
 .brand-name {
   font-size: 2rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-color), var(--accent-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0 0 0.5rem 0;
   line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
 }
 
 .brand-accent {
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--matrix-green), var(--electric-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
 }
 
 .brand-tagline {
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: var(--accent-color);
   font-weight: 600;
   margin: 0 0 1rem 0;
   line-height: 1.4;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 .highlight {
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  background: linear-gradient(135deg, var(--matrix-green), var(--accent-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
 }
 
 .brand-description {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.5;
   margin: 0 0 1.5rem 0;
   font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
 }
 
-/* Tech Stack Mobile */
+/* Tech Stack Mobile - Cyberpunk */
 .tech-stack-mobile {
   margin-top: 1.5rem;
+  position: relative;
 }
 
 .tech-label {
   display: block;
-  color: var(--text-muted);
+  color: var(--accent-color);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 .tech-icons-mobile {
@@ -145,36 +172,44 @@
   transition: var(--transition);
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 8px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
+  color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
 }
 
 .tech-icon-mobile:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px) scale(1.1);
+  background: rgba(0, 243, 255, 0.2);
   border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+  color: var(--text-primary);
 }
 
-/* Contact Section - Mobile Optimized */
+/* Contact Section - Cyberpunk Mobile Optimized */
 .footer-contact {
   text-align: center;
   padding: 0 0.5rem;
+  position: relative;
 }
 
 .contact-title {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
-  background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
 }
 
 .contact-info-mobile {
@@ -189,22 +224,25 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem;
-  background: var(--glass-bg);
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
+  background: rgba(0, 243, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 243, 255, 0.2);
   transition: var(--transition);
   min-height: 60px;
+  backdrop-filter: blur(10px);
 }
 
 .contact-item-mobile:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateX(3px);
+  background: rgba(0, 243, 255, 0.1);
+  transform: translateX(5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
 }
 
 .contact-icon-mobile {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -212,7 +250,24 @@
   color: white;
   font-size: 0.9rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-icon-mobile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.contact-item-mobile:hover .contact-icon-mobile::before {
+  left: 100%;
 }
 
 .contact-item-mobile a {
@@ -223,10 +278,12 @@
   flex: 1;
   font-size: 0.9rem;
   word-break: break-word;
+  font-family: 'Courier New', monospace;
 }
 
 .contact-item-mobile a:hover {
-  color: var(--text-primary);
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 .contact-item-mobile span {
@@ -234,21 +291,36 @@
   text-align: left;
   flex: 1;
   font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
 }
 
-/* Quick Social Links */
+/* Quick Social Links - Cyberpunk */
 .quick-social-mobile {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--glass-border);
+  border-top: 1px solid rgba(0, 243, 255, 0.3);
+  position: relative;
+}
+
+.quick-social-mobile::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
 }
 
 .quick-social-mobile span {
   display: block;
-  color: var(--text-muted);
+  color: var(--accent-color);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 .quick-social-icons {
@@ -261,7 +333,7 @@
 .quick-social-link {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,27 +343,59 @@
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.quick-social-link:hover::before {
+  left: 100%;
 }
 
 .quick-social-link:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
 }
 
-/* Main Social Section */
+/* Main Social Section - Cyberpunk */
 .main-social-section {
   text-align: center;
   padding: 1.5rem;
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  border-radius: 12px;
+  border-top: 1px solid rgba(0, 243, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+  background: rgba(0, 243, 255, 0.05);
+  border-radius: 15px;
   margin: 0 0.5rem;
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+}
+
+.main-social-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--matrix-green));
+  opacity: 0.8;
 }
 
 .social-invite {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: var(--accent-color);
   margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
@@ -299,6 +403,8 @@
   gap: 0.5rem;
   flex-wrap: wrap;
   line-height: 1.4;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+  font-weight: 600;
 }
 
 .main-social-links {
@@ -311,7 +417,7 @@
 .main-social-link {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -321,14 +427,32 @@
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
+  position: relative;
+  overflow: hidden;
+}
+
+.main-social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.main-social-link:hover::before {
+  left: 100%;
 }
 
 .main-social-link:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
 }
 
-/* Footer Bottom Mobile */
+/* Footer Bottom Mobile - Cyberpunk */
 .footer-bottom-mobile {
   display: flex;
   flex-direction: column;
@@ -336,11 +460,13 @@
   gap: 1.5rem;
   text-align: center;
   padding: 0 0.5rem;
+  position: relative;
 }
 
 .copyright-mobile {
   color: var(--text-muted);
   font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
 }
 
 .copyright-mobile p {
@@ -354,14 +480,26 @@
 }
 
 .heart-icon {
-  color: #ef4444;
+  color: var(--error-color);
   font-size: 0.8rem;
+  animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 .coffee-icon {
   color: #f59e0b;
   font-size: 0.8rem;
   margin-left: 0.25rem;
+  animation: coffeeSteam 3s infinite;
+}
+
+@keyframes coffeeSteam {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1.1); }
 }
 
 .footer-actions-mobile {
@@ -377,45 +515,84 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-color), var(--electric-purple));
   color: white;
   text-decoration: none;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 20px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   transition: var(--transition);
   border: none;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
   min-height: 44px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button-mobile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-button-mobile:hover::before {
+  left: 100%;
 }
 
 .cta-button-mobile:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 243, 255, 0.6);
 }
 
 .back-to-top-mobile {
   width: 44px;
   height: 44px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  color: var(--text-primary);
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 12px;
+  color: var(--accent-color);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
   flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.back-to-top-mobile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.back-to-top-mobile:hover::before {
+  left: 100%;
 }
 
 .back-to-top-mobile:hover {
   background: var(--accent-color);
   border-color: var(--accent-color);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+  color: white;
 }
 
 /* ===== TABLET STYLES (768px and up) ===== */
@@ -541,9 +718,10 @@
 /* Focus styles for accessibility */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--matrix-green);
   outline-offset: 2px;
   border-radius: 4px;
+  box-shadow: 0 0 15px var(--matrix-green);
 }
 
 /* Touch device improvements */
@@ -596,6 +774,7 @@ a:focus-visible {
     --text-secondary: #333333;
     --accent-color: #0000ff;
     --accent-secondary: #000080;
+    --matrix-green: #008000;
   }
   
   .footer {
@@ -680,4 +859,52 @@ a:focus-visible {
     height: 38px;
     font-size: 0.9rem;
   }
+}
+
+/* Cyberpunk Data Stream Effect */
+.data-stream-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-color), 
+    var(--accent-secondary), 
+    var(--matrix-green), 
+    transparent
+  );
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+/* Binary Code Animation */
+.binary-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: var(--matrix-green);
+  overflow: hidden;
+}
+
+/* Holographic Grid Effect */
+.hologram-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.1;
 }

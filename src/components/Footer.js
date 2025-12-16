@@ -111,7 +111,7 @@ const Footer = () => {
                 initial={{ scale: 0.9 }}
                 transition={{ duration: 0.4 }}
               >
-                Kavindu<span className="brand-accent">B</span>
+                Kavindu<span className="brand-accent">Bogahawatte</span>
               </motion.h2>
               <motion.p 
                 className="brand-tagline"
